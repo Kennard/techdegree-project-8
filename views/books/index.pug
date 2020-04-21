@@ -1,6 +1,10 @@
 extends ../layout
 
+
 block content
+  
+  include search
+
   h1= title
   p
     a(href="/books/new", class="button") Create New Book

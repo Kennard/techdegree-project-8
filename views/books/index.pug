@@ -2,9 +2,11 @@ extends ../layout
 
 
 block content
-  
-  include search
-
+  form(action="/books/search", method="get")
+      p
+        input(type="text", name="term" class="search-fld")
+        input(type="submit"  value="Search" class="search-btn")
+ 
   h1= title
   p
     a(href="/books/new", class="button") Create New Book
@@ -24,3 +26,11 @@ block content
           td= book.author
           td= book.genre
           td= book.year
+
+  p.pagination
+      a(href="/books/?page=1") <
+        - var i = 0
+            while i < lastpage
+              span
+                a(href="/books/?page=" + ++i )= i + " "
+      a(href="/books/?page=" + lastpage) >

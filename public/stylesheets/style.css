@@ -24,6 +24,34 @@ a.button, input[type=submit] {
   cursor: pointer;
 }
 
+/* Add styles for Pagination */
+.pagination a {
+  color: #019875;
+  background: #E7E7E7;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 8px 14px;
+  margin: 0 1px;
+  font-size: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.pagination a:hover {
+  color: white;
+  background:#01b189;
+  font-weight: 700;
+}
+
+form a.button, input[type=submit].search-btn {
+  margin-left: 14px;
+  transition: 0.4s;
+}
+input[type=text].search-fld {
+  margin-left: 220px;
+  width: 300px;
+}
+/* End of Custom Styles**/
+
+
 form a.button, input[type=submit] {
   margin-left: 140px;
   transition: 0.4s;

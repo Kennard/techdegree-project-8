@@ -1,5 +1,31 @@
+extends ../layout
 
-form(action="books/", method="post")
-   p
-        input(type="text", name="search" value="")
-        input(type="submit"  value="Search")
+block content
+  form(action="/books/search", method="get")
+      p
+        input(type="text", name="term" class="search-fld")
+        input(type="submit"  value="Search" class="search-btn")
+
+  h1= title
+  h3= termCount
+  
+  table
+    thead
+      tr
+        th= "Title"
+        th= "Author"
+        th= "Genre"
+        th= "Year"
+    tbody 
+      each book in books
+        tr
+          td
+            a(href="/books/" + book.id )= book.title
+          td= book.author
+          td= book.genre
+          td= book.year 
+
+  p
+    br
+  p
+    a(href="/books", class="button") Home              

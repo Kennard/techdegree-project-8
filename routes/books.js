@@ -9,7 +9,8 @@ function asyncHandler(cb){
     try {
       await cb(req, res, next)
     } catch(error){
-      res.status(500).send(error);
+      res.status(500);
+      res.render('error');
     }
   }
 }
@@ -18,7 +19,7 @@ function asyncHandler(cb){
 router.get('/', asyncHandler(async (req, res) => { 
 
 const page = parseInt(req.query.page) || 1;  
-const limit =  6;
+const limit =  8;
 const offset = (page - 1) * limit;
 
 const books  = await Book.findAll({
@@ -30,20 +31,23 @@ const allbooks  = await Book.findAll();
 const totalBooks = allbooks.length;
 const lastpage = Math.ceil(totalBooks / limit);
 
-  if(books){  
-    res.render("books", { books, title: "Books", page, lastpage });
-   }else{
-    res.status(404).render("books/not-found", {title: "Page Not Found"});
- }
-  
+//Conditional layer on top if pagination number changed in URI 
+  if(page > lastpage){
+     res.status(404).render("books/not-found", {title: "Page Not Found"});
+  }else {
+    if(books){  
+      res.render("books", { books, title: "Books", page, lastpage });
+    }else{
+      res.status(404).render("books/not-found", {title: "Page Not Found"});
+    }
+}
+
 }));
 
 
 /* GET - Shows full list of books. */
 router.get('/books/:page', asyncHandler(async (req, res) => {
-   
   res.render("books");
-
 }));
 
 

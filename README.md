@@ -4,7 +4,3 @@ This sample application is designed to managed a database of items. For this exa
 The librarian wants a more intuitive way to manage the library's collection of books. This project could just as well be used to store a collection of movies, music artist or recipes.
 
 The results is a web application that includes pages to list, add, update, delete and search books in a dynamic website using JavaScript, Node.js, Express, Pug, and the SQL ORM Sequelize.
-<<<<<<< HEAD
-=======
-
->>>>>>> a24ce1ba17b1fdd7e7aa4b7bc99f1da9d5cbae5c
